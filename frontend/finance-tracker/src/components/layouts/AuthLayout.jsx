@@ -2,12 +2,24 @@ import React from "react";
 
 import CARD_2 from "../../assets/images/card2.png";
 import { LuTrendingUpDown } from "react-icons/lu";
+import { LuTrendingUp } from "react-icons/lu";
 
 const AuthLayout = ({ children }) => {
   return (
     <div className="flex">
       <div className="w-screen h-screen md:w-[60vw] px-12 pt-8 pb-12">
-        <h2 className="text-lg font-medium text-black">Finance Tracker</h2>
+        {/* Changed gradient text to solid black */}
+        <h2 className="font-brand text-2xl md:text-5xl font-semibold tracking-tight text-black flex items-center gap-3 -ml-12">
+          <div className="flex items-center gap-1">
+            <LuTrendingUp className="text-primary text-4xl md:text-5xl" />
+            <LuTrendingUp className="text-primary text-4xl md:text-5xl" />
+          </div>
+          KACHING TRACKER
+          <div className="flex items-center gap-1">
+            <LuTrendingUp className="text-primary text-4xl md:text-5xl" />
+            <LuTrendingUp className="text-primary text-4xl md:text-5xl" />
+          </div>
+        </h2>
         {children}
       </div>
 
@@ -27,6 +39,7 @@ const AuthLayout = ({ children }) => {
         <img
           src={CARD_2}
           className="w-64 lg:w-[90%] absolute bottom-10 shadow-lg shadow-blue-400/15"
+          alt="Card graphic"
         />
       </div>
     </div>
