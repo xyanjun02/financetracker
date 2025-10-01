@@ -11,11 +11,15 @@ import SignUp from './pages/Auth/SignUp';
 import Home from './pages/Dashboard/Home'; 
 import Income from './pages/Dashboard/Income';
 import Expense from './pages/Dashboard/Expense';
+import UserProvider from "./context/UserContext";
+
+import { Toaster } from "react-hot-toast";
 
 
 const App = () => {
   return (
     <div>
+      <UserProvider>
       <Router>
         <Routes>
           <Route path="/" element={<Root />} />
@@ -26,18 +30,31 @@ const App = () => {
           <Route path="/expense" exact element={<Expense/>} />
         </Routes>
       </Router>
+  <Toaster
+          toastOptions={{
+            className: "",
+            style: {
+              fontSize:'13px'
+            },
+          }}
+        />
+        
+      </UserProvider>
     </div>
   );
 };
 
-export default App
-
+// Define the Root component to handle the initial redirect
 const Root = () => {
-  const isAuthenticated = !!localStorage.getItem('token');
+  // Check if token exists in localStorage
+  const isAuthenticated = !!localStorage.getItem("token");
 
+  // Redirect to dashboard if authenticated, otherwise to login
   return isAuthenticated ? (
     <Navigate to="/dashboard" />
   ) : (
     <Navigate to="/login" />
   );
 };
+
+export default App;
